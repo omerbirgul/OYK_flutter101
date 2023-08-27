@@ -1,8 +1,22 @@
 void main(List<String> args){
 
-  List<String> namelist = ["pardus", "casper", "mono"];
-  print(namelist.length);
-
-  Map user = {"name": "Omer", "age": 1};
-  print(user["name"]);
+  // showNumber(name: "omer",id: 99999, age: 25);
+  
+  print(calculateDiscount(25));
 }
+
+void showNumber({
+  required int id,
+  String? name,
+  int? age,
+  List<String>? users,
+})
+    {
+      print(" your name is $name, your age is $age, your id is $id");
+    }
+
+ double discount = 0.1; 
+    double calculateDiscount(double price){
+      double calcDis =  price * discount;
+    return calcDis;
+    }
