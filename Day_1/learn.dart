@@ -7,7 +7,7 @@ void main(){
 
   print("employee name: ${newEmployee.name}, employee salary: ${newEmployee.salary}, employee department: ${newEmployee.department}");
 
-  print("hello wordl");
+  print(newEmployee.showDepartment());
 }
 
 

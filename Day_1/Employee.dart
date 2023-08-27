@@ -8,7 +8,11 @@ Employee(this.name ,this.salary, this.department){
 
 }
 
-void showDepartment(){
-  print("deprartment is $department");
+
+String? showDepartment(){
+  print("********************************");
+  var sonuc = "deprartment is $department";
+  return sonuc;
+
 }
 }
