@@ -1,7 +1,7 @@
 import 'User.dart';
 
 void main(){
-  User user1 = new User(UserRole.Student, "Omer", DateTime.now());
+  User user1 = new User(UserRole.Student, UserName.Omer, DateTime.now());
   // User user2 = new User("Teacher", "Gizem", DateTime.now());
   // User user3 = new User("Manager", "Ozcan", DateTime.now());
 
@@ -14,6 +14,10 @@ void main(){
     print("Teacher Interface");
   
   }
+
+  String word = "hello";
+  print(word.upperCaseFirstWord());
+  
 
 
 }
