@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/user.dart';
 import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-
   HomeScreen({super.key});
 
   @override
@@ -14,11 +16,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool isRead = false;
 
-  List <Color> colorList = List.generate(60, (index) => Colors.deepPurple.shade100);
+  List<User> userList = List.generate(
+      60,
+      (index) => User(
+          name: "Name: $index",
+          surname: "Surname",
+          userColor: Colors.green,
+          isRead: false));
 
 // *********************************************************
 // *********************************************************
-
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
 // *********************************************************
 // *********************************************************
 
-
   Widget _buildUserCard(BuildContext context, int index) {
     return Card(
       child: ListTile(
@@ -48,15 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
           size: 40,
         ),
         title: Text(
-          "$title ${(index + 1)}",
+          userList[index].name,
           style: const TextStyle(
             fontSize: 22,
           ),
         ),
-        subtitle: const Text(
-          "Surname",
+        subtitle: Text(
+          userList[index].surname,
         ),
-        
         trailing: IconButton(
           icon: const Icon(
             Icons.arrow_right,
@@ -64,20 +69,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           onPressed: () async {
             navigateToDetail(context, index);
-            
-            setState((){
 
-              isRead = true;
-              colorList[index] = Colors.white;
+            setState(() {
+              // isRead = true;
+              userList[index].isRead = true;
             });
-            
           },
         ),
-        tileColor: colorList[index],
+        tileColor: userList[index].isRead ? Colors.white : Colors.deepPurple.shade100,
       ),
     );
   }
-
 
 // *********************************************************
 // *********************************************************
@@ -86,9 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
     bool isTrue = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) {
-          return DetailScreen(
-            appBarTitle: "$title ${(index + 1)}",
-          );
+          return DetailScreen(user: userList[index]);
         },
       ),
     );
