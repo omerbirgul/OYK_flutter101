@@ -14,6 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool isRead = false;
 
+  List <Color> colorList = List.generate(60, (index) => Colors.deepPurple.shade100);
+
 // *********************************************************
 // *********************************************************
 
@@ -29,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: 60,
         itemBuilder: (context, index) => _buildUserCard(context, index),
       ),
+      backgroundColor: Colors.deepPurple,
     );
   }
 
@@ -65,11 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
             setState((){
 
               isRead = true;
+              colorList[index] = Colors.white;
             });
             
           },
         ),
-        tileColor: isRead ? Colors.white : Colors.deepPurple.shade100,
+        tileColor: colorList[index],
       ),
     );
   }
