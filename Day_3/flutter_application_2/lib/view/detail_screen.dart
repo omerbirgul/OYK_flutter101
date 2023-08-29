@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/user.dart';
 
+import '../model/user.dart';
 
 class DetailScreen extends StatelessWidget {
   final User user;
@@ -17,11 +17,19 @@ class DetailScreen extends StatelessWidget {
         ),
         automaticallyImplyLeading: false,
       ),
+
+
+
+      
       body: Center(
         child: Column(
           children: [
-            Text(
-                "Lorem Ipsum is siLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.mply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
+            SizedBox(
+              height: 20,
+            ),
+            buildAssetImage(),
+
+            
             ElevatedButton(
               child: Text("Back"),
               onPressed: () {
@@ -34,4 +42,24 @@ class DetailScreen extends StatelessWidget {
       ),
     );
   }
+
+    Widget buildAssetImage(){
+
+      return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        "assets/237-536x354.jpg",
+                      ),
+                      fit: BoxFit.fitHeight),
+                ),
+              ),
+            );
+    }
+
 }

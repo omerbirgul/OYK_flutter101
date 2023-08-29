@@ -1,9 +1,11 @@
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/user.dart';
+
+import '../model/user.dart';
 import 'detail_screen.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
@@ -15,35 +17,31 @@ class _HomeScreenState extends State<HomeScreen> {
   final String title = "Name";
 
   bool isRead = false;
-
+  // int randomInt = Random().nextInt(max)
   List<User> userList = List.generate(
-      60,
-      (index) => User(
-          name: "Name: $index",
-          surname: "Surname",
-          userColor: Colors.green,
-          isRead: false));
-
-// *********************************************************
-// *********************************************************
+    60,
+    (index) => User(
+      name: "Name $index",
+      surname: 'Surname',
+      userColor: Colors.green,
+      isRead: false,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("User"),
+        title: const Text("Users"),
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: 60,
+        itemCount: userList.length,
         itemBuilder: (context, index) => _buildUserCard(context, index),
       ),
       backgroundColor: Colors.deepPurple,
     );
   }
-
-// *********************************************************
-// *********************************************************
 
   Widget _buildUserCard(BuildContext context, int index) {
     return Card(
@@ -67,28 +65,29 @@ class _HomeScreenState extends State<HomeScreen> {
             Icons.arrow_right,
             size: 40,
           ),
-          onPressed: () async {
+          onPressed: () {
             navigateToDetail(context, index);
 
             setState(() {
-              // isRead = true;
+              //   isRead = true;
+
               userList[index].isRead = true;
             });
           },
         ),
-        tileColor: userList[index].isRead ? Colors.white : Colors.deepPurple.shade100,
+        tileColor:
+            userList[index].isRead ? Colors.white : Colors.deepPurple.shade200,
       ),
     );
   }
-
-// *********************************************************
-// *********************************************************
 
   Future<void> navigateToDetail(BuildContext context, int index) async {
     bool isTrue = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) {
-          return DetailScreen(user: userList[index]);
+          return DetailScreen(
+            user: userList[index],
+          );
         },
       ),
     );
