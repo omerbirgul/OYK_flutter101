@@ -1,0 +1,4 @@
+#Fri Sep 01 16:31:03 TRT 2023
+base.0=D\:\\flutterDeneme\\oyk2023yaz-flutter-getx\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
